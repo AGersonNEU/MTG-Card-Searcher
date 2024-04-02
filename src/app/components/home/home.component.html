@@ -5,7 +5,22 @@
             @if(card.colors[0].trim() == ''){
                 <h2>Blue</h2>
             }@else{
-                <h2>{{card.colors[0]}}</h2>
+                @if (card.colors[0] == 'U') {
+                    <img class="blueImg" src="../../../assets/icons/Blue.png" />
+                }
+                @if (card.colors[0] == 'B') {
+                    <img class="blueImg" src="../../../assets/icons/Black.png" />
+                }
+                @if (card.colors[0] == 'R') {
+                    <img class="blueImg" src="../../../assets/icons/Red.png" />
+                }
+                @if (card.colors[0] == 'G') {
+                    <img class="blueImg" src="../../../assets/icons/Green.png" />
+                }
+                @if (card.colors[0] == 'W') {
+                    <img class="blueImg" src="../../../assets/icons/White.png" />
+                }
+                
             }
         </div>
         <div class="centerText"> 

@@ -24,7 +24,7 @@ export class CardAPIService {
       let newCard={
         id: card.id,
         name: card.name,
-        image: card.image_uris.normal,
+        image: card.image_uris.png,
         cost: card.prices.usd,
         set: card.set_name,
         colors: card.colors,
@@ -45,7 +45,7 @@ export class CardAPIService {
           newCard.colors = 'Red';
           break;
         //black
-        case 'R':
+        case 'B':
           newCard.colors = 'Black';
           break;
         //green
@@ -73,7 +73,7 @@ export class CardAPIService {
     let newCard={
       id: data.id,
       name: data.name,
-      image: data.image_uris.normal,
+      image: data.image_uris.png,
       cost: data.prices.usd,
       set: data.set_name,
       colors: data.colors,
@@ -96,7 +96,7 @@ export class CardAPIService {
     let newCard={
       id: data.id,
       name: data.name,
-      image: data.image_uris.normal,
+      image: data.image_uris.png,
       cost: data.prices.usd,
       set: data.set_name,
       colors: data.colors,

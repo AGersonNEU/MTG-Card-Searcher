@@ -19,3 +19,10 @@ img{
     margin: 20px;
 }
 
+.blueImg{
+    height: 150px;
+    width: auto;
+    align-self: center;
+    padding-left: 10px;
+}
+

@@ -1,4 +1,4 @@
-img{
+.img{
     padding-left: 20px;
     padding-top: 30px;
     height: auto;   
@@ -16,4 +16,21 @@ div{
     display: flex;
     justify-content: center;
     color: #6F8FAF;
+}
+
+.blueImg{
+    height: 40px;
+    width: auto;
+    align-self: center;
+    padding-left: 10px;
+}
+
+.cardColor{
+    align-self: center;
+    display: flex;
+}
+
+.colorSection{
+    display: flex;
+    align-content: center;
 }

@@ -1,14 +1,33 @@
 @if(card){
     <div>
         <span>
-            <img [src]="card.image"/>
+            <img class="img" [src]="card.image"/>
         </span>
         <span class="cardDetails">
             <h1>Card Title: {{card.name}} ({{card.releaseDate}})</h1>
             <h2>Card Cost: ${{card.cost}}</h2>
-            <h2>Card Colors: {{card.colors}}</h2>
-            <h2>Set Name: {{card.set}}</h2>
-            <br/>
+            <section class="colorSection">
+                <h2 class="cardColor">Card Colors: </h2>
+                @for(currentColor of card.colors; track currentColor){
+                    @if (currentColor == 'U') {
+                        <img class="blueImg" src="../../../assets/icons/Blue.png" />
+                    }
+                    @if (currentColor == 'B') {
+                        <img class="blueImg" src="../../../assets/icons/Black.png" />
+                    }
+                    @if (currentColor == 'R') {
+                        <img class="blueImg" src="../../../assets/icons/Red.png" />
+                    }
+                    @if (currentColor == 'G') {
+                        <img class="blueImg" src="../../../assets/icons/Green.png" />
+                    }
+                    @if (currentColor == 'W') {
+                        <img class="blueImg" src="../../../assets/icons/White.png" />
+                    }
+                }
+            </section>
+            
+            <h2>Set Name: &nbsp; {{card.set}}</h2>
             <h2>Format Legalities</h2>
             <ul>
                 <li>

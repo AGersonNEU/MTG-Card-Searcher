@@ -1,0 +1,21 @@
+.centerText{
+    text-align: center;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+}
+
+div{
+    color: #6F8FAF;
+}
+
+img{
+    height: auto;   
+    width: 100%;
+    padding: 20px;
+    max-width: 400px;
+    margin: 20px;
+}
+

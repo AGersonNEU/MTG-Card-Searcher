@@ -1,0 +1,17 @@
+@if(card){
+    <div>
+        <div class="centerText">
+            <h1>The color of the day is: </h1>
+            @if(card.colors[0].trim() == ''){
+                <h2>Blue</h2>
+            }@else{
+                <h2>{{card.colors[0]}}</h2>
+            }
+        </div>
+        <div class="centerText"> 
+            <h1>The card of the day is: </h1>
+            <img [src]="card.image"/>
+        </div>
+    </div>
+}
+

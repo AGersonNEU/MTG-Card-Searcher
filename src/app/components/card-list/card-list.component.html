@@ -1,0 +1,19 @@
+<div class="center">
+    <h2>
+        <input [(ngModel)]="searchQuery" type="text" placeholder="Search Magic Cards"/>
+    </h2>
+    <h2>
+        <button (click)="searchCards()">Search</button>
+    </h2>
+</div>
+
+<div class="center">
+    @if(cards.length > 0){
+        @for(currentCard of cards; track currentCard.id){
+            <a [routerLink]="['/searchCards/', currentCard.id]" routerLinkActive="active">
+                <img [src]="currentCard.image">
+            </a>
+        }
+    }
+</div>
+

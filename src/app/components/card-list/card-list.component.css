@@ -1,0 +1,39 @@
+input{
+    display: flex;
+    justify-self: center;
+    background-color: #efebd6;
+    border:solid 3px#6F8FAF;
+    border-radius: 5px;
+    color: #6F8FAF;
+    font-size: larger;
+    text-align: center;
+}
+
+button{
+    background-color: #6F8FAF;
+    color: #efebd6;
+    border:solid 3px #516980;
+    border-radius: 5px;
+    font-size: larger;
+    margin-left: 10px;
+}
+
+button:hover{
+    background-color: #516980;
+    cursor: pointer;
+}
+
+.center{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+a{
+    margin: 10px;
+}
+
+img{
+    height: 300px;
+}

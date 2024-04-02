@@ -1,0 +1,38 @@
+nav{
+    background-color: #6F8FAF;
+    color: #efebd6;
+    border-radius: 5px;
+    box-shadow: 3px 3px 8px #516980;
+}
+
+ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+}   
+
+a{
+    text-decoration: none;
+    color: #efebd6;
+}
+
+li{
+    font-size: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+li:hover{
+    font-size: 30px;
+    background-color: #516980;
+    cursor: pointer;
+}
+
+body{
+    color: #6F8FAF;
+}
+

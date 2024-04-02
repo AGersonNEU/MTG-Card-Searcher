@@ -1,0 +1,32 @@
+@if(card){
+    <div>
+        <span>
+            <img [src]="card.image"/>
+        </span>
+        <span class="cardDetails">
+            <h1>Card Title: {{card.name}} ({{card.releaseDate}})</h1>
+            <h2>Card Cost: ${{card.cost}}</h2>
+            <h2>Card Colors: {{card.colors}}</h2>
+            <h2>Set Name: {{card.set}}</h2>
+            <br/>
+            <h2>Format Legalities</h2>
+            <ul>
+                <li>
+                    Commander: {{card.commander}}
+                </li>
+                <li>
+                    Standard: {{card.standard}}
+                </li>
+                <li>
+                    Modern: {{card.modern}}
+                </li>
+                <li>
+                    Duel: {{card.duel}}
+                </li>
+            </ul>
+        </span>
+    </div>
+}
+
+
+

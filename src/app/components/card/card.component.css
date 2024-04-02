@@ -1,0 +1,19 @@
+img{
+    padding-left: 20px;
+    padding-top: 30px;
+    height: auto;   
+    width: 100%;
+    padding: 20px;
+    max-width: 400px;
+    margin: 20px;
+}
+
+.cardDetails{
+    padding-left: 100px;
+}
+
+div{
+    display: flex;
+    justify-content: center;
+    color: #6F8FAF;
+}

@@ -3,9 +3,10 @@
         <span>
             <img class="img" [src]="card.image"/>
         </span>
+        <!-- TODO: add more details to the card page from API -->
         <span class="cardDetails">
-            <h1>Card Title: {{card.name}} ({{card.releaseDate}})</h1>
-            <h2>Card Cost: ${{card.cost}}</h2>
+            <h1>Card Title: &nbsp; {{card.name}} ({{card.releaseDate}})</h1>
+            <h2>Card Cost: &nbsp; ${{card.cost}}</h2>
             <section class="colorSection">
                 <h2 class="cardColor">Card Colors: </h2>
                 @for(currentColor of card.colors; track currentColor){

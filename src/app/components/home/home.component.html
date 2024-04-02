@@ -1,6 +1,8 @@
 @if(card){
     <div>
         <div class="centerText">
+            <!-- TODO: need to make a check to see if it is the same day, if so
+            grab the same card -->
             <h1>The color of the day is: </h1>
             @if(card.colors[0].trim() == ''){
                 <h2>Blue</h2>
@@ -24,6 +26,7 @@
             }
         </div>
         <div class="centerText"> 
+            <!-- TODO: make the image more dynamic with the page -->
             <h1>The card of the day is: </h1>
             <img [src]="card.image"/>
         </div>

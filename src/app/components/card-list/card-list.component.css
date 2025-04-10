@@ -37,3 +37,39 @@ a{
 img{
     height: 300px;
 }
+
+.card-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card-container {
+    position: relative;
+}
+
+.card-container img {
+    width: 200px;
+    height: auto;
+    cursor: pointer;
+}
+
+.context-menu {
+    position: fixed;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.context-menu-item {
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+.context-menu-item:hover {
+    background-color: #f0f0f0;
+}

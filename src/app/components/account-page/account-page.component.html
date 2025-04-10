@@ -1,0 +1,31 @@
+<div class="center">
+    <h2>
+        <input [(ngModel)]="searchQuery" type="text" placeholder="Search Bulk Cards"/>
+    </h2>
+    <h2>
+        <button (click)="searchCards()">Search</button>
+    </h2>
+</div>
+
+<div class="center">
+    @if(cards.length > 0){
+        @for(currentCard of cards; track currentCard.id){
+            <div class="card-container" (contextmenu)="onContextMenu($event, currentCard)">
+                <a [routerLink]="['/searchCards', currentCard.id]" routerLinkActive="active">
+                    <img [src]="currentCard.image">
+                </a>
+            </div>
+        }
+    }
+</div>
+
+@if(showContextMenu) {
+    <div class="context-menu" 
+         [style.left.px]="contextMenuPosition.x"
+         [style.top.px]="contextMenuPosition.y"
+         (click)="$event.stopPropagation()">
+        <div class="context-menu-item" (click)="deleteCard()">
+            Delete Card
+        </div>
+    </div>
+}

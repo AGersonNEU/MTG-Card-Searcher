@@ -7,13 +7,24 @@
     </h2>
 </div>
 
-<div class="center">
-    @if(cards.length > 0){
-        @for(currentCard of cards; track currentCard.id){
+<div class="card-list">
+    @for(currentCard of cards; track currentCard.id){
+        <div class="card-container" (contextmenu)="onContextMenu($event, currentCard)">
             <a [routerLink]="['/searchCards/', currentCard.id]" routerLinkActive="active">
                 <img [src]="currentCard.image">
             </a>
-        }
+        </div>
     }
 </div>
+
+@if(showContextMenu) {
+    <div class="context-menu" 
+         [style.left.px]="contextMenuPosition.x"
+         [style.top.px]="contextMenuPosition.y"
+         (click)="$event.stopPropagation()">
+        <div class="context-menu-item" (click)="addToMongoDB()">
+            Add Card to Bulk
+        </div>
+    </div>
+}
 

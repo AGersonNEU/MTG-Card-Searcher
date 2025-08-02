@@ -60,9 +60,49 @@ app.delete('/api/deleteCard', async (req, res) => {
 });
 
 app.post('/api/addCard', async (req, res) => {
-    const card = new Card(req.body);
-    await card.save();
-    res.json({ success: true, card: card });
+    try {
+        console.log('Adding card:', req.body.name);
+        
+        // Check if the card already exists by finding the card with the same name
+        const existingCard = await Card.findOne({ name: req.body.name });
+        console.log('Existing card found:', existingCard ? existingCard.name : 'None');
+        
+        // Also check for case-insensitive match
+        const existingCardCaseInsensitive = await Card.findOne({ 
+            name: { $regex: new RegExp(`^${req.body.name}$`, 'i') }
+        });
+        console.log('Case-insensitive match found:', existingCardCaseInsensitive ? existingCardCaseInsensitive.name : 'None');
+        
+        if (existingCard) {
+            // Update the quantity of the existing card
+            const quantityToAdd = req.body.quantity || 1;
+            existingCard.quantity = (existingCard.quantity || 0) + quantityToAdd;
+            await existingCard.save();
+            console.log(`Updated quantity for ${req.body.name} to ${existingCard.quantity}`);
+            return res.status(200).json({ 
+                success: true,
+                message: 'Card quantity updated',
+                card: existingCard
+            });
+        }
+
+        // Only create new card if it doesn't exist
+        const cardData = {
+            ...req.body,
+            quantity: req.body.quantity || 1
+        };
+        
+        const card = new Card(cardData);
+        await card.save();
+        console.log(`Created new card: ${req.body.name} with quantity ${cardData.quantity}`);
+        res.json({ success: true, card: card });
+    } catch (error) {
+        console.error('Error adding card:', error);
+        res.status(500).json({ 
+            success: false,
+            error: 'Error adding card'
+        });
+    }
 });
 
 // Get all cards endpoint

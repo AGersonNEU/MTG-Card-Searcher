@@ -32,7 +32,8 @@ export class CardAPIService {
         standard: card.legalities.standard,
         modern: card.legalities.modern,
         duel: card.legalities.duel,
-        releaseDate: card.released_at
+        releaseDate: card.released_at,
+        quantity: 0
       } 
 
       switch(newCard.colors){
@@ -81,7 +82,8 @@ export class CardAPIService {
       standard: data.legalities.standard,
       modern: data.legalities.modern,
       duel: data.legalities.duel,
-      releaseDate: data.released_at
+      releaseDate: data.released_at,
+      quantity: 0
     } 
 
     return newCard;
@@ -104,7 +106,8 @@ export class CardAPIService {
       standard: data.legalities.standard,
       modern: data.legalities.modern,
       duel: data.legalities.duel,
-      releaseDate: data.released_at
+      releaseDate: data.released_at,
+      quantity: 0
     } 
 
     return newCard;

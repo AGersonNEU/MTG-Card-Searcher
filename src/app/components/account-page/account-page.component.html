@@ -14,6 +14,10 @@
                 <a [routerLink]="['/searchCards', currentCard.id]" routerLinkActive="active">
                     <img [src]="currentCard.image">
                 </a>
+                <button class="delete-button" (click)="deleteCard(currentCard)" title="Delete from Bulk">-</button>
+                <div style="padding-left: 15px;">
+                    <p>Quantity: {{ currentCard.quantity }}</p>
+                </div>
             </div>
         }
     }
@@ -24,8 +28,14 @@
          [style.left.px]="contextMenuPosition.x"
          [style.top.px]="contextMenuPosition.y"
          (click)="$event.stopPropagation()">
-        <div class="context-menu-item" (click)="deleteCard()">
+        <div class="context-menu-item" (click)="deleteCard(selectedCard!)">
             Delete Card
         </div>
+    </div>
+}
+
+@if(showNotification) {
+    <div class="notification">
+        {{ notificationMessage }}
     </div>
 }

@@ -9,6 +9,7 @@ export interface Card{
     modern: string,
     duel: string,
     colors: string[],
-    releaseDate: string
+    releaseDate: string,
+    quantity: number
 }
 

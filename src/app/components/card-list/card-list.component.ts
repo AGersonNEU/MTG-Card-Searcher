@@ -24,6 +24,9 @@ export class CardListComponent {
   showContextMenu = false;
   contextMenuPosition = { x: 0, y: 0 };
   selectedCard: Card | null = null;
+  showNotification = false;
+  notificationMessage = '';
+  notificationTimeout: any;
 
   async searchCards() {
     if(this.searchQuery.trim().toLowerCase() != '') {
@@ -43,10 +46,27 @@ export class CardListComponent {
     this.selectedCard = null;
   }
 
-  async addToMongoDB() {
-    if (this.selectedCard) {
+  showCardAddedNotification(cardName: string) {
+    this.notificationMessage = `${cardName} was added to bulk`;
+    this.showNotification = true;
+    
+    // Clear any existing timeout
+    if (this.notificationTimeout) {
+      clearTimeout(this.notificationTimeout);
+    }
+    
+    // Hide notification after 3 seconds
+    this.notificationTimeout = setTimeout(() => {
+      this.showNotification = false;
+    }, 3000);
+  }
+
+  async addToMongoDB(card?: Card) {
+    const cardToAdd = card || this.selectedCard;
+    if (cardToAdd) {
       try {
-        await this.apiService.addCard(this.selectedCard);
+        await this.apiService.addCard(cardToAdd);
+        this.showCardAddedNotification(cardToAdd.name);
         console.log('Card added to MongoDB');
       } catch (error) {
         console.error('Error adding card to MongoDB:', error);

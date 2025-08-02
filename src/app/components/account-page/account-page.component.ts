@@ -20,12 +20,17 @@ export class AccountPageComponent {
   showContextMenu = false;
   contextMenuPosition = { x: 0, y: 0 };
   selectedCard: Card | null = null;
+  notificationMessage: string = '';
+  showNotification: boolean = false;
+  private notificationTimeout: any;
 
   async searchCards() {
     if(this.searchQuery.trim().toLowerCase() === '') {
       this.cards = await this.mongoService.getAllCards();
+      console.log("Cards from MongoDB:", this.cards);
     } else {
       this.cards = await this.mongoService.getCardSearch(this.searchQuery.trim().toLowerCase());
+      console.log("Cards from search:", this.cards);
     }
   }
 
@@ -41,16 +46,30 @@ export class AccountPageComponent {
     this.selectedCard = null;
   }
 
-  async deleteCard() {
-    if (this.selectedCard) {
-      try {
-        await this.mongoService.deleteCard(this.selectedCard.id);
-        // Refresh the card list after deletion
-        await this.searchCards();
-        console.log('Card deleted successfully');
-      } catch (error) {
-        console.error('Error deleting card:', error);
-      }
+  showCardDeletedNotification(cardName: string) {
+    this.notificationMessage = `${cardName} was removed from bulk`;
+    this.showNotification = true;
+    
+    // Clear any existing timeout
+    if (this.notificationTimeout) {
+      clearTimeout(this.notificationTimeout);
+    }
+    
+    // Hide notification after 3 seconds
+    this.notificationTimeout = setTimeout(() => {
+      this.showNotification = false;
+    }, 3000);
+  }
+
+  async deleteCard(card: Card) {
+    try {
+      await this.mongoService.deleteCard(card.id);
+      this.showCardDeletedNotification(card.name);
+      // Refresh the card list after deletion
+      await this.searchCards();
+      console.log('Card deleted successfully');
+    } catch (error) {
+      console.error('Error deleting card:', error);
     }
     this.closeContextMenu();
   }

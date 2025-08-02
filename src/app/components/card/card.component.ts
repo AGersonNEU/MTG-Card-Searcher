@@ -15,9 +15,9 @@ export class CardComponent {
   }
   id: any = '';
   card: Card | null | void = null;
-  //we need a list of pokemon to show
   async ngOnInit(){
     this.id = this.route.snapshot.paramMap.get("id");
     this.card = await this.cardService.getCardById(this.id);
+    console.log(this.card);
   }
 }

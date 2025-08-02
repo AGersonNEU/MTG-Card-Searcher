@@ -13,6 +13,9 @@
             <a [routerLink]="['/searchCards/', currentCard.id]" routerLinkActive="active">
                 <img [src]="currentCard.image">
             </a>
+            <button class="add-button" (click)="addToMongoDB(currentCard)" title="Add to Bulk">
+                <span class="plus-icon">+</span>
+            </button>
         </div>
     }
 </div>
@@ -23,8 +26,14 @@
          [style.top.px]="contextMenuPosition.y"
          (click)="$event.stopPropagation()">
         <div class="context-menu-item" (click)="addToMongoDB()">
-            Add Card to Bulk
+            Add to MongoDB
         </div>
+    </div>
+}
+
+@if(showNotification) {
+    <div class="notification">
+        {{ notificationMessage }}
     </div>
 }
 

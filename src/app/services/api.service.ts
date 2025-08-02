@@ -13,9 +13,15 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   async addCard(card: Card): Promise<Card> {
+    // Always set quantity to 1 when adding cards from Scryfall
+    const cardData = {
+      ...card,
+      quantity: 1
+    };
+    
     const response = 
       await this.http.post<{ success: boolean; card: Card }>
-      (`${this.apiUrl}/addCard`, card).toPromise();
+      (`${this.apiUrl}/addCard`, cardData).toPromise();
     if (!response?.card) {
       throw new Error('Failed to add card');
     }
@@ -38,6 +44,7 @@ export class ApiService {
   async getAllCards(): Promise<Card[]> {
     try {
       const response = await this.http.get<{ success: boolean; cards: Card[] }>(`${this.apiUrl}/getAllCards`).toPromise();
+      console.log("All cards from MongoDB:", response?.cards);
       return response?.cards || [];
     } catch (error) {
       console.error('Error getting all cards:', error);

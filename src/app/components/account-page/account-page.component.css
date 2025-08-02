@@ -23,6 +23,47 @@ button:hover{
     cursor: pointer;
 }
 
+.delete-button {
+    position: absolute;
+    opacity: 80%;
+    bottom: 60px;
+    left: 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.delete-button:hover {
+    background-color: #d32f2f;
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.delete-button:active {
+    animation: spin 1s ease-in-out;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 .center{
     display: flex;
     flex-wrap: wrap;
@@ -32,6 +73,7 @@ button:hover{
 
 a{
     margin: 10px;
+    margin-bottom: 0px;
 }
 
 img{
@@ -66,4 +108,29 @@ img{
 
 .context-menu-item:hover {
     background-color: #f0f0f0;
+}
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #f44336;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 1001;
+    animation: slideIn 0.3s ease-out;
+    font-weight: bold;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }

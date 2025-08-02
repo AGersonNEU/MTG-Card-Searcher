@@ -11,7 +11,8 @@ const cardSchema = new mongoose.Schema({
     modern: String,
     duel: String,
     colors: [String],
-    releaseDate: String
+    releaseDate: String,
+    quantity: { type: Number, default: 1 }
 });
 
 module.exports = mongoose.model('Card', cardSchema);

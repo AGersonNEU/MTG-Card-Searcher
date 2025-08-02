@@ -68,7 +68,7 @@ app.post('/api/addCard', async (req, res) => {
 // Get all cards endpoint
 app.get('/api/getAllCards', async (req, res) => {
     try {
-        const cards = await Card.find({}).limit(100); // Limit to 100 cards to prevent overwhelming response
+        const cards = await Card.find({}).limit(200); // Limit to 100 cards to prevent overwhelming response
         
         res.json({ 
             success: true,

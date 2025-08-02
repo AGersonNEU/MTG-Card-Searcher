@@ -43,6 +43,7 @@ img{
     flex-wrap: wrap;
     gap: 20px;
     padding: 20px;
+    justify-content: center;
 }
 
 .card-container {
@@ -181,4 +182,11 @@ img{
 
 .quantity-display p {
     margin: 0;
+}
+
+.no-cards-found {
+    font-size: 20px;
+    font-weight: bold;
+    color: #6F8FAF;
+    text-align: center;
 }

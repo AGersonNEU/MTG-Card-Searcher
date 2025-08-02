@@ -8,6 +8,9 @@
 </div>
 
 <div class="card-list">
+    @if(cards.length === 0 || cards.length === undefined){
+        <p class="no-cards-found">No cards found</p>
+    } @else {
     @for(currentCard of cards; track currentCard.id){
         <div class="card-container" (contextmenu)="onContextMenu($event, currentCard)">
             <a [routerLink]="['/searchCards/', currentCard.id]" routerLinkActive="active">
@@ -17,6 +20,7 @@
                 <span class="plus-icon">+</span>
             </button>
         </div>
+    }
     }
 </div>
 

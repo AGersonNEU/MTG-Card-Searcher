@@ -42,14 +42,34 @@ app.get('/api/searchCards', async (req, res) => {
 
 app.delete('/api/deleteCard', async (req, res) => {
     try {
-        const card = await Card.findOneAndDelete({ id: req.body.id });
+        const card = await Card.findOne({ id: req.body.id });
         if (!card) {
             return res.status(404).json({ 
                 success: false,
                 error: 'Card not found'
             });
         }
-        res.json({ success: true, card: card });
+
+        if (card.quantity > 1) {
+            // Reduce quantity by 1
+            card.quantity -= 1;
+            await card.save();
+            console.log(`Reduced quantity for ${card.name} to ${card.quantity}`);
+            res.json({ 
+                success: true, 
+                message: 'Card quantity reduced',
+                card: card 
+            });
+        } else {
+            // Delete the card entirely
+            await Card.findByIdAndDelete(card._id);
+            console.log(`Deleted card: ${card.name}`);
+            res.json({ 
+                success: true, 
+                message: 'Card deleted',
+                card: card 
+            });
+        }
     } catch (error) {
         console.error('Error deleting card:', error);
         res.status(500).json({ 

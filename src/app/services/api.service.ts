@@ -52,9 +52,10 @@ export class ApiService {
     }
   }
 
-  async deleteCard(cardId: string): Promise<void> {
+  async deleteCard(cardId: string): Promise<any> {
     try {
-      await this.http.delete(`${this.apiUrl}/deleteCard`, { body: { id: cardId } }).toPromise();
+      const response = await this.http.delete(`${this.apiUrl}/deleteCard`, { body: { id: cardId } }).toPromise();
+      return response;
     } catch (error) {
       console.error('Error deleting card:', error);
       throw error;

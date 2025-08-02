@@ -63,8 +63,27 @@ export class AccountPageComponent {
 
   async deleteCard(card: Card) {
     try {
-      await this.mongoService.deleteCard(card.id);
-      this.showCardDeletedNotification(card.name);
+      const response = await this.mongoService.deleteCard(card.id);
+      
+      // Check if quantity was reduced or card was deleted
+      if (response && response.message === 'Card quantity reduced') {
+        this.notificationMessage = `${card.name} quantity reduced`;
+      } else {
+        this.notificationMessage = `${card.name} was removed from bulk`;
+      }
+      
+      this.showNotification = true;
+      
+      // Clear any existing timeout
+      if (this.notificationTimeout) {
+        clearTimeout(this.notificationTimeout);
+      }
+      
+      // Hide notification after 3 seconds
+      this.notificationTimeout = setTimeout(() => {
+        this.showNotification = false;
+      }, 3000);
+      
       // Refresh the card list after deletion
       await this.searchCards();
       console.log('Card deleted successfully');
